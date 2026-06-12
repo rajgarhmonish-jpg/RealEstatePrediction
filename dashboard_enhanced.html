@@ -703,8 +703,7 @@ const cities = ['Bengaluru', 'MMR', 'NCR', 'Pune', 'Hyderabad', 'Chennai', 'Kolk
 // Load dashboard data from JSON
 async function loadDashboardData() {
     try {
-        const response = await fetch('/Users/manish/Downloads/KotakHousingData/Project/dashboard_model_data.json');
-        dashboardData = await response.json();
+        const response = await fetch('https://raw.githubusercontent.com/YOUR_USERNAME/dashboard/main/data/dashboard_model_data.json');        dashboardData = await response.json();
         modelStats = dashboardData.model_stats;
         initializeDashboard();
     } catch (error) {
