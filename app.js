@@ -179,9 +179,9 @@ function initImportanceDrawer() {
     drawer.setAttribute("aria-hidden", "true");
   }
 
-  btnOpen.addEventListener("click", openDrawer);
-  btnClose.addEventListener("click", closeDrawer);
-  overlay.addEventListener("click", closeDrawer);
+  btnOpen?.addEventListener("click", openDrawer);
+  btnClose?.addEventListener("click", closeDrawer);
+  overlay?.addEventListener("click", closeDrawer);
   document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
 }
 
@@ -261,8 +261,8 @@ function selectCity(city) {
 
 // ── Scenario Tabs ─────────────────────────────────────────────────────────────
 function initScenarioTabs() {
-  document.getElementById("tab-macro").addEventListener("click", () => switchTab("macro"));
-  document.getElementById("tab-quarterly").addEventListener("click", () => switchTab("quarterly"));
+  document.getElementById("tab-macro")?.addEventListener("click", () => switchTab("macro"));
+  document.getElementById("tab-quarterly")?.addEventListener("click", () => switchTab("quarterly"));
 }
 
 function switchTab(tab) {
@@ -584,7 +584,7 @@ function refreshAccordionHeaders(city) {
 
 // ── Reset All ─────────────────────────────────────────────────────────────────
 function initResetAll() {
-  document.getElementById("btn-reset-all").addEventListener("click", () => {
+  document.getElementById("btn-reset-all")?.addEventListener("click", () => {
     if (!activeCity) return;
     sliderDeltas    = {};
     qtrSliderDeltas = {};
