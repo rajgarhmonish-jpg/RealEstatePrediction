@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>India Housing Demand Forecast · 2026–2028</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- ── HEADER ────────────────────────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <span class="header-logo">◈</span>
+        <div>
+          <div class="header-title">India Residential Demand Forecast</div>
+          <div class="header-subtitle">Macro-Regional Pipeline · GBM 1-Step Engine · 2026–2028</div>
+        </div>
+      </div>
+      <div class="header-meta">
+        <div class="metric-pill" id="pill-r2">R² <strong>–</strong></div>
+        <div class="metric-pill" id="pill-mape">MAPE <strong>–</strong></div>
+        <div class="metric-pill" id="pill-rmse">RMSE <strong>–</strong></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── CITY TABS ─────────────────────────────────────────────────────────── -->
+  <nav class="city-nav" role="tablist" aria-label="Select city">
+    <div class="city-nav-inner" id="city-tabs"></div>
+  </nav>
+
+  <!-- ── MAIN CONTENT ──────────────────────────────────────────────────────── -->
+  <main class="main-content">
+
+    <!-- Chart card -->
+    <section class="card chart-card">
+      <div class="chart-card-header">
+        <h2 class="card-title" id="chart-title">–</h2>
+        <div class="legend-row" id="legend-row">
+          <span class="legend-dot" style="background:#1d1d1f"></span><span>Historical Actuals</span>
+          <span class="legend-dot" style="background:#0071e3"></span><span>Training Fit</span>
+          <span class="legend-dot" style="background:#30b0c7"></span><span>Walk-Forward Test</span>
+          <span class="legend-dot" style="background:#b0b0b8;border:1px dashed #888;border-radius:50%"></span><span>Baseline Forecast</span>
+          <span class="legend-dot" style="background:#ff9500"></span><span>Scenario Forecast</span>
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <canvas id="main-chart" aria-label="Demand forecast chart"></canvas>
+      </div>
+    </section>
+
+    <!-- Forecast summary table -->
+    <section class="card table-card">
+      <div class="card-header">
+        <h2 class="card-title">Forecast Summary</h2>
+        <span class="card-badge" id="forecast-badge">2026–2028</span>
+      </div>
+      <div class="table-scroll">
+        <table class="forecast-table" id="forecast-table">
+          <thead>
+            <tr>
+              <th>Period</th>
+              <th>Baseline (units)</th>
+              <th>Scenario (units)</th>
+              <th>Δ vs Baseline</th>
+            </tr>
+          </thead>
+          <tbody id="forecast-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Sensitivity controls -->
+    <section class="card controls-card">
+      <div class="card-header">
+        <div>
+          <h2 class="card-title">Scenario Controls</h2>
+          <p class="card-desc">Adjust key drivers to see how forecast deflects from baseline</p>
+        </div>
+        <button class="btn-reset" id="btn-reset">Reset to Baseline</button>
+      </div>
+      <div class="sliders-grid" id="sliders-grid"></div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ────────────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>Source: <strong>4KotakHousingv5.xls</strong> · 504 quarters · 7 cities · 2008–2025</span>
+      <span>Model: GBM (n=150, lr=0.03, depth=3) · Walk-forward validated</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
