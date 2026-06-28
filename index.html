@@ -20,6 +20,9 @@
         </div>
       </div>
       <div class="header-meta">
+        <button class="imp-trigger" id="btn-importance" title="Model Feature Importance">
+          Feature Importance
+        </button>
         <div class="metric-pill" id="pill-r2">R² <strong>–</strong></div>
         <div class="metric-pill" id="pill-mape">MAPE <strong>–</strong></div>
         <div class="metric-pill" id="pill-rmse">RMSE <strong>–</strong></div>
@@ -73,16 +76,47 @@
       </div>
     </section>
 
-    <!-- Sensitivity controls -->
-    <section class="card controls-card">
-      <div class="card-header">
+    <!-- Feature Importance drawer (hidden by default) -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <aside class="importance-drawer" id="importance-drawer" aria-hidden="true">
+      <div class="drawer-header">
         <div>
-          <h2 class="card-title">Scenario Controls</h2>
-          <p class="card-desc">Adjust key drivers to see how forecast deflects from baseline</p>
+          <h3 class="drawer-title">Model Feature Importance</h3>
+          <p class="drawer-desc">GBM Gini impurity reduction — what drives the forecast</p>
         </div>
-        <button class="btn-reset" id="btn-reset">Reset to Baseline</button>
+        <button class="drawer-close" id="drawer-close" aria-label="Close">✕</button>
       </div>
-      <div class="sliders-grid" id="sliders-grid"></div>
+      <div class="importance-legend" style="margin-bottom:16px">
+        <span class="imp-dot controllable"></span><span>In scenario controls</span>
+        <span class="imp-dot autoregressive"></span><span>Autoregressive / fixed</span>
+      </div>
+      <div class="importance-bars" id="importance-bars"></div>
+    </aside>
+
+
+    <section class="card scenario-section">
+
+      <!-- Tab bar -->
+      <div class="scenario-tabbar">
+        <div class="scenario-tabs">
+          <button class="scenario-tab active" id="tab-macro">Macro Scenario</button>
+          <button class="scenario-tab"         id="tab-quarterly">Quarter-wise Scenario</button>
+        </div>
+        <button class="btn-reset" id="btn-reset-all">Reset All</button>
+      </div>
+
+      <!-- Panel 1: Macro sliders -->
+      <div class="scenario-panel" id="panel-macro">
+        <p class="panel-desc">Adjust key macro drivers — impact distributes across all 12 forecast quarters proportionally</p>
+        <div class="sliders-grid" id="sliders-grid"></div>
+      </div>
+
+      <!-- Panel 2: Quarter accordion -->
+      <div class="scenario-panel hidden" id="panel-quarterly">
+        <p class="panel-desc">Fine-tune each quarter individually — each quarter has its own set of drivers that stack on top of the macro scenario</p>
+        <div class="qtr-accordion" id="qtr-accordion"></div>
+      </div>
+
     </section>
 
   </main>
